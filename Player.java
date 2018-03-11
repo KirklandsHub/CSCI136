@@ -10,12 +10,14 @@ public class Player {
 	private static String playerName;
 	private static int[] position = {0,0};
 	
-	
-	
 	// This class has attributes, but no methods. position and playerName are changed from other
 	// classes.
 	
-	
+	// Constructor
+	public void Animal(String playerName) 
+	{
+		this.playerName = playerName;
+	}
 	
 	// Getters and Setters section:
 	// imgName getter
