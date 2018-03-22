@@ -7,6 +7,7 @@ package project;
  */
 import java.awt.Color;
 import java.awt.Dimension;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -17,12 +18,14 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
+
 public class Panel extends JPanel
 {
 	
 	String membersName;
 	
 	
+
 	//instantiate Player class for player picture
 	Player myPlayer = new Player(membersName, this, 500,50, "./src/Jon Snow.jpg");
 	ImageIcon myIcon = new ImageIcon(myPlayer.getImagePath());
@@ -48,6 +51,7 @@ public class Panel extends JPanel
 	setPreferredSize(new Dimension(400,400));
 	setBackground(Color.WHITE);
 	
+
 	//start timer needs to be in Enemy class
 	myTimer.start();	
 	
@@ -55,9 +59,9 @@ public class Panel extends JPanel
 	//set both icons to scaled images
 	myIcon.setImage(newimg);
 	myIcon2.setImage(newimg2);
+
 		
 	}
-	
 	
 	
 	//Draws a new picture every time it is called using repaint()
@@ -95,6 +99,7 @@ public class Panel extends JPanel
 /**************************************************************************/	
 	
 	//Start button...
+
 	private class buttonHandler implements ActionListener
 	{
 
@@ -102,10 +107,8 @@ public class Panel extends JPanel
 		public void actionPerformed(ActionEvent e) 
 		{
 			
-			
 		}
 	
 	}
-
 	
 }

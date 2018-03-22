@@ -1,7 +1,9 @@
 package project;
 
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 
 /*
  * Kirk and Ben Game Project
@@ -10,6 +12,7 @@ import java.awt.event.KeyListener;
  * This class controls the attributes associated with the player
  */
 
+
 public class Player implements KeyListener
 {
 	private String playerName;
@@ -17,7 +20,6 @@ public class Player implements KeyListener
 	private int x;
 	private int y;
 	private String imagePath;
-	
 	
 	
 	// Constructor
@@ -31,9 +33,6 @@ public class Player implements KeyListener
 		myPlayer.addKeyListener(this);
 		myPlayer.setFocusable(true);
 	}
-	
-
-
 	
 		
 	//makes player move in direction of key pressed
@@ -69,8 +68,6 @@ public class Player implements KeyListener
 	public void keyTyped(KeyEvent e) {}
 	
 	
-	
-	
 	//maybe needs to get put into movement class???
 	public int getX() 
 	{
@@ -96,14 +93,13 @@ public class Player implements KeyListener
 	public void setY(int y)
 	{
 		this.y = y;
-	}
-	
-	
+	}	
 
 	// playerName getter and setter
 	public String getPlayerName() 
 	{
 		return playerName;
+
 	}
 	
 }

@@ -1,10 +1,10 @@
 package project;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
-
 
 /*
  * Kirk and Ben Game Project
@@ -78,8 +78,6 @@ public class Enemy {
 	}
 
 	
-	
-	
 	// speed getter and setter
 	public int getSpeed() {
 		return speed;
@@ -88,7 +86,5 @@ public class Enemy {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	
-	
 	
 }

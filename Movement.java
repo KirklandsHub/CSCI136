@@ -54,6 +54,7 @@ public class Movement
 	}
 	
 	
+
 	public boolean ItemCollisionDetection() {
 		// This will monitor the player and item positions to return true if they collide
 		return false;
@@ -63,6 +64,4 @@ public class Movement
 		// This will monitor the player and enemy positions to return true if they collide
 		return false;
 	}
-	
-
 }
