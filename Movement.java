@@ -8,14 +8,53 @@ package project;
  * Enemy Class objects.
  */
 
-public class Movement {
+
+//currently only being accessed by enemy in panel
+public class Movement 
+{
 	
-	public int[] KeyListeners(char left, char up, char right, char down) {
-		// this will be called each time the user presses a key to move the main character
-		int[] test = {0,0};
-		return test;
+	private int x;
+	private int y;
+	private String imagePath;
+	
+	public Movement(int x, int y, String imagePath)
+	{
+		
+		this.x = x;
+		this.y  = y;
+		this.imagePath = imagePath;	
 	}
 	
+	
+	
+	public int getX() 
+	{
+		return x;
+	}
+
+	public int getY() 
+	{
+		return y;
+	}
+
+	public String getImagePath() 
+	{
+		
+		return imagePath;
+	}
+
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+
+	public void setY(int y) 
+	{
+		this.y = y;
+	}
+	
+	
+
 	public boolean ItemCollisionDetection() {
 		// This will monitor the player and item positions to return true if they collide
 		return false;
@@ -24,10 +63,5 @@ public class Movement {
 	public boolean EnemyCollisionDetection() {
 		// This will monitor the player and enemy positions to return true if they collide
 		return false;
-	}
-	
-	public String toString()
-	{
-		return "The Movement class works";
 	}
 }

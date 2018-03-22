@@ -1,5 +1,10 @@
 package project;
 
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+
 /*
  * Kirk and Ben Game Project
  * 3/10/18
@@ -7,42 +12,94 @@ package project;
  * This class controls the attributes associated with the player
  */
 
-public class Player {
-	private static final String IMGNAME = "";	// set as constant because this path shouldn't change
+
+public class Player implements KeyListener
+{
 	private String playerName;
-	private static int[] position = {0,0};
+	private Panel myPlayer;
+	private int x;
+	private int y;
+	private String imagePath;
 	
-	// This class has attributes, but no methods. position and playerName are changed from other
-	// classes.
 	
 	// Constructor
-	public Player(String playerName) 
+	public Player(String playerName, Panel myPlayer, int x, int y, String imagePath) 
 	{
 		this.playerName = playerName;
+		this.myPlayer = myPlayer;
+		this.x = x;
+		this.y  = y;
+		this.imagePath = imagePath;	
+		myPlayer.addKeyListener(this);
+		myPlayer.setFocusable(true);
 	}
 	
-	// Getters and Setters section:
-	// imgName getter
-	public static String getImgName() {
-		return IMGNAME;
-	}
-	
-	// playerName getter and setter
-	public String getPlayerName() {
-		return playerName;
-	}
-	
-	// position getter and setter
-	public static int[] getPosition() {
-		return position;
-	}
-	public static void setPosition(int[] position) {
-		Player.position = position;
-	}
-	
-	public String toString()
+		
+	//makes player move in direction of key pressed
+	@Override
+	public void keyPressed(KeyEvent arg0) 
 	{
-		return "The Player class works";
+		if(arg0.getKeyCode() == KeyEvent.VK_A)
+		{
+			setX(getX()-5);
+		}
+		
+		if(arg0.getKeyCode() == KeyEvent.VK_D)
+		{
+			setX(getX()+5);
+		}
+		
+		if(arg0.getKeyCode() == KeyEvent.VK_W)
+		{
+			setY(getY()-5);
+		}
+		
+		if(arg0.getKeyCode() == KeyEvent.VK_S)
+		{
+			setY(getY()+5);
+		}
+		
+	myPlayer.repaint();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {}	
+	@Override
+	public void keyTyped(KeyEvent e) {}
+	
+	
+	//maybe needs to get put into movement class???
+	public int getX() 
+	{
+		return x;
+	}
+
+	public int getY() 
+	{
+		return y;
+	}
+
+	public String getImagePath() 
+	{
+		
+		return imagePath;
+	}
+
+	public void setX(int x) 
+	{
+		this.x = x;
+	}
+
+	public void setY(int y)
+	{
+		this.y = y;
+	}	
+
+	// playerName getter and setter
+	public String getPlayerName() 
+	{
+		return playerName;
+
 	}
 	
 }

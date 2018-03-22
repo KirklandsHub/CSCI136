@@ -22,7 +22,6 @@ public class Frame
 			myFrame.pack();	
 			myFrame.setVisible(true);
 				
-				
 
 	}
 

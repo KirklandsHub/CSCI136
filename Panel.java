@@ -7,15 +7,42 @@ package project;
  */
 import java.awt.Color;
 import java.awt.Dimension;
+
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
 
 public class Panel extends JPanel
 {
 	
 	String membersName;
+	
+	
+
+	//instantiate Player class for player picture
+	Player myPlayer = new Player(membersName, this, 500,50, "./src/Jon Snow.jpg");
+	ImageIcon myIcon = new ImageIcon(myPlayer.getImagePath());
+	//scale image
+	Image newimg = myIcon.getImage().getScaledInstance(120, 100, Image.SCALE_DEFAULT);
+	
+	
+	
+	//instantiate Movement class for enemy picture
+	Movement myEnemy = new Movement(0,0, "./src/Night King.jpg");//needs to be Enemy myEnemy = new Enemy(this, this, 0,0, ect...)
+	ImageIcon myIcon2 = new ImageIcon(myEnemy.getImagePath());
+	//scale image
+	Image newimg2 = myIcon2.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+	
+	
+	//instantiate timer
+	Timer myTimer = new Timer(10, new timerListener()); //needs to be in Enemy class or ItemsToCollect class
 	
 	
 	
@@ -24,49 +51,64 @@ public class Panel extends JPanel
 	setPreferredSize(new Dimension(400,400));
 	setBackground(Color.WHITE);
 	
-	
-	//instantiation of every other class
-	Game myGame = new Game(membersName, 1, 2, 3);
-	ItemToCollect myItems = new ItemToCollect();
-	Player myPlayer = new Player("Kirk");
-	Enemy myEnemy = new Enemy();
-	Movement myMovement = new Movement();
+
+	//start timer needs to be in Enemy class
+	myTimer.start();	
 	
 	
-	//prints out test toString from every class instantiated to test them
-	//a blank panel will be displayed and all the toStrings will be printed in the console when the frame is called
-	System.out.println(myGame.toString());
-	System.out.println(myItems.toString());
-	System.out.println(myPlayer.toString());
-	System.out.println(myEnemy.toString());
-	System.out.println(myMovement.toString());
-	
+	//set both icons to scaled images
+	myIcon.setImage(newimg);
+	myIcon2.setImage(newimg2);
+
 		
 	}
 	
 	
-	private static void Timer()
+	//Draws a new picture every time it is called using repaint()
+	public void paintComponent(Graphics page)
 	{
-		//determines how often the screen is repainted and how often the enemy moves
-		//called at an presently unknown time increment
+		super.paintComponent(page);
+		page.drawImage(myIcon.getImage(), myPlayer.getX(), myPlayer.getY(), null);
+		page.drawImage(myIcon2.getImage(), myEnemy.getX(), myEnemy.getY(), null);
 	}
+
+
 	
+
+	//THE FOLLOWING CODE NEEDS TO BE IN ENEMY CLASS...
+/*************************************************************************/	
+	private class timerListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			//makes enemy chase player
+			if(myEnemy.getX() < myPlayer.getX())
+			{myEnemy.setX(myEnemy.getX()+1);}
+			else if(myEnemy.getX() > myPlayer.getX())
+			{myEnemy.setX(myEnemy.getX()-1);}
+			else if(myEnemy.getY() < myPlayer.getY())
+			{myEnemy.setY(myEnemy.getY()+1);}
+			else if(myEnemy.getY() > myPlayer.getY())
+			{myEnemy.setY(myEnemy.getY()-1);}
+			repaint();
+		}
+		
+	}	
+/**************************************************************************/	
 	
+	//Start button...
+
 	private class buttonHandler implements ActionListener
 	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			//event handler just for start button
 			
 		}
 	
-	}	
-	
-	public static void Repaint()
-	{
-		//repaints screen
 	}
 	
 }

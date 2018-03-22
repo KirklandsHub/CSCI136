@@ -1,5 +1,11 @@
 package project;
 
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
 /*
  * Kirk and Ben Game Project
  * 3/10/18
@@ -8,43 +14,69 @@ package project;
  */
 
 public class Enemy {
-	private static final String IMGNAME = "";	// set as constant because this path shouldn't change
-	private static int[] position = {0,0};
+	
 	private int speed;
+	private int x;
+	private int y;
+	private String imagePath;
+	private Panel myEnemy;
+	private Panel myPlayer;
+	Timer myTimer = new Timer(500, new timerListener());
 	
+	public Enemy(Panel myEnemy, Panel myPlayer, int x, int y, String imagePath)
+	{
+		this.x = x;
+		this.y  = y;
+		this.imagePath = imagePath;
+		this.myEnemy = myEnemy;
+		this.myPlayer = myPlayer;
+		myTimer.start();
 	
-	
-	public static int[] RandomlyAppear() {
-		// sets a random position for enemy to start at
-		// will be called at the beginning of each level
-		return position;
-	}
-	
-	public static void MoveTowardPlayer() {
-		// uses player position to determine which direction to move, and then updates position
-		// This will be called from timer in the main panel		
-	}
-	
-	public static void EnemySpeedIncrementer() {
-		// This will be called from LevelIncrementer in the game class
-		// It will increase the speed, which will be used by the Timer() in the Panel
-	}
-	
-	
-	// Getters and Setters section:
-	// imgName getter
-	public static String getImgname() {
-		return IMGNAME;
-	}
-	
-	// position getter and setter
-	public static int[] getPosition() {
-		return position;
 	}
 
-	public static void setPosition(int[] position) {
-		Enemy.position = position;
+	private class timerListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			
+			if(getX() < myPlayer.getX())
+			{setX(getX()+5);}
+			if(getY() < myPlayer.getY())
+			{setY(getY()+5);}
+			if(getX() > myPlayer.getX())
+			{setX(getX()-5);}
+			if(getY() > myPlayer.getY())
+			{setY(getY()-5);}
+			myEnemy.repaint();
+		}
+		
+	}	
+	
+	//maybe needs to get put into movement class???
+	public int getX() {
+		return x;
 	}
+
+	public int getY() {
+		return y;
+	}
+
+	public String getImagePath() 
+	{
+		
+		return imagePath;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	
 	// speed getter and setter
 	public int getSpeed() {
@@ -55,8 +87,4 @@ public class Enemy {
 		this.speed = speed;
 	}
 	
-	public String toString()
-	{
-		return "The Enemy class works";
-	}
 }
