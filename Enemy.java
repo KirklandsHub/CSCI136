@@ -1,16 +1,17 @@
 package project;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
+
 
 /*
  * Kirk and Ben Game Project
  * 3/10/18
  * Enemy.java
  * This class controls the attributes and methods associated with the Enemy object
+ * CHANGE CHANGE CHANGE!!!!!! BATIACHT
  */
 
 public class Enemy {
@@ -78,6 +79,8 @@ public class Enemy {
 	}
 
 	
+	
+	
 	// speed getter and setter
 	public int getSpeed() {
 		return speed;
@@ -86,5 +89,7 @@ public class Enemy {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
+	
 	
 }
